@@ -17,7 +17,7 @@ from lib.HTTPclient import HTTPclient
 
 
 def makeRequest(request):
-    destination = 'localhost:8080'
+    destination = 'localhost:18081'
     ip, port = destination.split(':')
     sleeptime = randrange(5)
     result = None
@@ -26,7 +26,7 @@ def makeRequest(request):
     try:
         result = "Request on '{0}':'{1}' is '{2}'. Sleep for {3}".format(ip, port, request, sleeptime)
         req = {"headers":{"Content-Type": "application/json", "Accept": "application/json"},
-                   "uri":"http://{0}:{1}".format(ip, port),
+                   "uri":"http://{0}:{1}/{2}".format(ip, port, request),
                    "user":"user1", "pwd":"pwd123",
                    #"data":"{\"name\":\"test_{0}\", \"attributes\":[{\"key1\":\"val1\"}, {\"key2\":\"val2\"}]}".format(request)}
                     "data":"test_{0}".format(request)}
@@ -45,7 +45,7 @@ def processSuccess(data):
     pass
 
 if __name__ == '__main__':
-    source = ['one', 'two', 'three', '1', '2', '3','a','b','c','d']
+    source = ['one', 'two', 'three', '1', '2', '3','a','b','c','d','e','f','g','h','j','k','l','m','n','o']
     poolLength = 2
     pool = Pool(processes=poolLength)
     responces = [pool.apply_async(makeRequest, (source[i], ), callback=processSuccess) for i in range(len(source))]

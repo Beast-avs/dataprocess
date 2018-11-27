@@ -39,8 +39,9 @@ class Handler(BaseHTTPRequestHandler):
 
         self.send_response(200)
         #self.headers({"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"})
-        responceMessage = "Server {0} V{1} responded with: {2}; on request: {3}".format(self.server, self.server_version, self.responses, self.request)
-        self.wfile.write(responceMessage)
+        responceMessage = 'Server {0} V{1} responded with: {2}; on request: {3}'.format(self.server, self.server_version, self.responses, self.request)
+        #responceMessage = 'Server ' + self.server + ' V' + self.server_version + ' responded with: ' + ' ' + self.responses + '; on request: ' + self.request
+        self.wfile.write(responceMessage.encode())
         self.end_headers()
 
 

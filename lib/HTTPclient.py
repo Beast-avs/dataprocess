@@ -12,7 +12,7 @@ class HTTPclient:
         pwd = request['pwd']
         data = request['data']
 
-        #print("HTTPclient.sendRequest: headers: {0}; uri: {1}; user/pwd: {2}/{3}; data: {4}".format(headers, uri, user, pwd, data))
+        print("HTTPclient.sendRequest: headers: {0}; uri: {1}; user/pwd: {2}/{3}; data: {4}".format(headers, uri, user, pwd, data))
         try:
             response = requests.get(uri, auth=(user, pwd), headers=headers, data=data)
         except requests.exceptions.ConnectionError as e:
